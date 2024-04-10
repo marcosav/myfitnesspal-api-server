@@ -1,0 +1,8 @@
+mfp:
+  python:
+    path: ${MFP_PYTHON_PATH}
+    binary: ${MFP_PYTHON:python3}
+  library:
+    username: ${MFP_USERNAME:}
+    password: ${MFP_PASSWORD:}
+    cache-lifespan: ${CACHE_LIFESPAN:7200}

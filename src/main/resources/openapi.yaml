@@ -1,0 +1,112 @@
+openapi: 3.0.3
+info:
+  title: Diary Food API
+  version: 1.0.0
+tags:
+  - name: food
+    description: Diary food information
+  - name: meals
+    description: Meals information
+paths:
+  /v1/food:
+    get:
+      tags:
+        - food
+      summary: Get Diary Food
+      operationId: getFoodDiary
+      parameters:
+        - name: date
+          in: query
+          required: true
+          description: Date for retrieving diary food
+          schema:
+            type: string
+            format: date
+        - name: toDate
+          in: query
+          description: End date for retrieving diary food (optional)
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FoodDayResponse'
+
+  /v1/meals:
+    get:
+      tags:
+        - meals
+      summary: Get Meals
+      operationId: getMeals
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AvailableMealsResponse'
+
+components:
+  schemas:
+    FoodDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        amount:
+          type: number
+          format: double
+        unit:
+          type: string
+      required:
+        - name
+        - amount
+
+    DayMealDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        food:
+          type: array
+          items:
+            $ref: '#/components/schemas/FoodDTO'
+      required:
+        - name
+        - food
+
+    FoodDayResponse:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        meals:
+          type: array
+          items:
+            $ref: '#/components/schemas/DayMealDTO'
+      required:
+        - date
+        - meals
+
+    MealInfoDTO:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+        - name
+
+    AvailableMealsResponse:
+      type: object
+      properties:
+        meals:
+          type: array
+          items:
+            $ref: '#/components/schemas/MealInfoDTO'
+      required:
+        - meals
