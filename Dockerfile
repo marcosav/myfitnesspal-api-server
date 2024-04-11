@@ -32,15 +32,9 @@ WORKDIR /home/appuser
 
 COPY --from=build /source/build/libs/*.jar ./myfitnesspal-api-server.jar
 
-#COPY python/firefox.tar.gz .
-#RUN chown appuser firefox.tar.gz
 COPY python/mfp_bridge.py .
 RUN chown appuser mfp_bridge.py
 
 USER appuser
-
-#RUN mkdir .mozilla
-#RUN tar -xzvf firefox.tar.gz -C .mozilla
-#RUN rm firefox.tar.gz
 
 CMD "java" "-jar" "myfitnesspal-api-server.jar"
