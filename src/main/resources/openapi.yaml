@@ -57,6 +57,8 @@ components:
       properties:
         name:
           type: string
+        brand:
+          type: string
         amount:
           type: number
           format: double

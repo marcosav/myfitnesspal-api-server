@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "com.gmail.marcosav2010"
-version = "0.0.1-SNAPSHOT"
+version = "1.0.0"
 
 val springBootVersion = "3.2.4"
 val springDocVersion = "2.3.0"
