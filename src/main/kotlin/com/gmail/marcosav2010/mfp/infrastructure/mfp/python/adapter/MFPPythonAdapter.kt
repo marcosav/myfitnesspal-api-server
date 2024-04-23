@@ -9,7 +9,7 @@ import com.gmail.marcosav2010.mfp.domain.model.Meal
 import com.gmail.marcosav2010.mfp.infrastructure.mfp.python.bridge.PythonBridge
 import com.gmail.marcosav2010.mfp.infrastructure.mfp.python.mapper.PythonModelMapper
 import com.gmail.marcosav2010.mfp.infrastructure.mfp.python.mapper.toDomain
-import com.gmail.marcosav2010.mfp.infrastructure.mfp.python.model.PMeal
+import com.gmail.marcosav2010.mfp.infrastructure.mfp.python.model.PDay
 import com.gmail.marcosav2010.mfp.infrastructure.mfp.python.model.UserMetadata
 import org.springframework.stereotype.Component
 import java.text.SimpleDateFormat
@@ -22,18 +22,18 @@ class MFPPythonAdapter(
     private val mapper: PythonModelMapper
 ) : DiaryFetcher, SettingsFetcher {
 
-    override fun getDayFood(date: Date): Day {
-        val parsedDate = dateFormatter.format(date)
+    override fun getDayFood(dates: List<Date>): List<Day> {
+        val parsedDates = dates.map { dateFormatter.format(it) }
 
-        val result = bridge.execute("day_meals", parsedDate)
+        val result = bridge.execute("day_meals", *parsedDates.toTypedArray())
 
-        val meals: List<PMeal>
+        val meals: List<PDay>
         if (result.code == 0)
             meals = objectMapper.readValue(result.output)
         else
             throw RuntimeException(result.output)
 
-        return mapper.toDomain(date, meals)
+        return mapper.toDomain(meals)
     }
 
     override fun getMeals(): List<Meal> {

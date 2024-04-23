@@ -5,5 +5,5 @@ import java.util.*
 
 interface DiaryFetcher {
 
-    fun getDayFood(date: Date): Day
+    fun getDayFood(dates: List<Date>): List<Day>
 }

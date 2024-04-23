@@ -34,7 +34,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/FoodDayResponse'
+                $ref: '#/components/schemas/FoodDaysResponse'
 
   /v1/meals:
     get:
@@ -81,7 +81,7 @@ components:
         - name
         - food
 
-    FoodDayResponse:
+    FoodDayDTO:
       type: object
       properties:
         date:
@@ -94,6 +94,16 @@ components:
       required:
         - date
         - meals
+
+    FoodDaysResponse:
+      type: object
+      properties:
+        days:
+          type: array
+          items:
+            $ref: '#/components/schemas/FoodDayDTO'
+      required:
+        - days
 
     MealInfoDTO:
       type: object

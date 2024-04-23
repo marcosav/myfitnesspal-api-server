@@ -1,20 +1,20 @@
 package com.gmail.marcosav2010.mfp.infrastructure.mfp.python.bridge
 
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.core.io.Resource
 import org.springframework.stereotype.Component
+import java.io.File
 
 @Component
 class PythonBridge {
 
     @Value("\${mfp.python.path}")
-    private var resourceFile: Resource? = null
+    private lateinit var resourceFile: String
 
     @Value("\${mfp.python.binary}")
     private lateinit var python: String
 
     fun execute(cmd: String, vararg args: String): PythonExecutionResult {
-        val processBuilder = ProcessBuilder(python, resourceFile!!.file.path, cmd, *args)
+        val processBuilder = ProcessBuilder(python, File(resourceFile).path, cmd, *args)
         processBuilder.redirectErrorStream(true)
 
         val process = processBuilder.start()

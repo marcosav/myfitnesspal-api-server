@@ -9,7 +9,29 @@ import java.util.*
 @Component
 class GetFoodDayUseCaseImpl(private val diaryFetcher: DiaryFetcher) : GetFoodDayUseCase {
 
-    override fun invoke(from: Date, end: Date?): Day {
-        return diaryFetcher.getDayFood(from);
+    override fun invoke(from: Date, end: Date?): List<Day> {
+        return diaryFetcher.getDayFood(from..end);
+    }
+
+    operator fun Date.rangeTo(toDate: Date?): List<Date> {
+        if (toDate == null) return listOf(this)
+
+        val datesInRange = hashSetOf<Date>()
+
+        val calendar = Calendar.getInstance()
+        calendar.setTime(this)
+        calendar[Calendar.HOUR_OF_DAY] = 0
+
+        val endCalendar = Calendar.getInstance()
+        endCalendar.setTime(toDate)
+        endCalendar[Calendar.HOUR_OF_DAY] = 23
+
+        while (calendar.before(endCalendar)) {
+            val result = calendar.time
+            datesInRange.add(result)
+            calendar.add(Calendar.DATE, 1)
+        }
+
+        return datesInRange.sorted()
     }
 }

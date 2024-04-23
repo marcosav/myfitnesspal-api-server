@@ -1,6 +1,7 @@
 package com.gmail.marcosav2010.mfp.api.controller
 
 import com.gmail.marcosav2010.mfp.api.mapper.FoodMapper
+import com.gmail.marcosav2010.mfp.api.mapper.toResponse
 import com.gmail.marcosav2010.mfp.domain.usecases.GetFoodDayUseCase
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RestController

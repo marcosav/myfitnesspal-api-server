@@ -11,7 +11,8 @@ import java.util.*
 
 class MFPLibraryAdapter(private val mapper: LegacyMapper, private val mfp: MFPService) : DiaryFetcher, SettingsFetcher {
 
-    override fun getDayFood(date: Date): Day = mapper.toDomain(date, mfp.getDayMeals(date))
+    override fun getDayFood(dates: List<Date>): List<Day> =
+        listOf(mapper.toDomain(dates.first(), mfp.getDayMeals(dates.first())))
 
     override fun getMeals(): List<Meal> = mapper.toDomain(mfp.userMeals)
 }
