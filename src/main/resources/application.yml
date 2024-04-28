@@ -2,6 +2,7 @@ mfp:
   python:
     path: ${MFP_PYTHON_PATH}
     binary: ${MFP_PYTHON:python3}
+    cookies-db-path: ${MFP_PYTHON_COOKIE_DB_PATH}
   library:
     username: ${MFP_USERNAME:}
     password: ${MFP_PASSWORD:}

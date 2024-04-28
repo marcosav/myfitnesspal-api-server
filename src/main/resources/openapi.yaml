@@ -7,6 +7,8 @@ tags:
     description: Diary food information
   - name: meals
     description: Meals information
+  - name: sessionCookies
+    description: Session cookies
 paths:
   /v1/food:
     get:
@@ -49,6 +51,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AvailableMealsResponse'
+
+  /v1/session:
+    post:
+      tags:
+        - sessionCookies
+      summary: Update session cookies
+      operationId: updateSessionCookies
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: Successful response
 
 components:
   schemas:
