@@ -35,6 +35,9 @@ COPY --from=build /source/build/libs/*.jar ./myfitnesspal-api-server.jar
 COPY python/mfp_bridge.py .
 RUN chown appuser mfp_bridge.py
 
+COPY python/cookie_bridge.py .
+RUN chown appuser cookie_bridge.py
+
 USER appuser
 
 CMD "java" "-jar" "myfitnesspal-api-server.jar"
