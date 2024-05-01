@@ -10,7 +10,7 @@ import java.util.*
 class GetFoodDayUseCaseImpl(private val diaryFetcher: DiaryFetcher) : GetFoodDayUseCase {
 
     override fun invoke(from: Date, end: Date?): List<Day> {
-        return diaryFetcher.getDayFood(from..end);
+        return diaryFetcher.getDayFood(from..end)
     }
 
     operator fun Date.rangeTo(toDate: Date?): List<Date> {

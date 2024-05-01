@@ -11,14 +11,14 @@ plugins {
 }
 
 group = "com.gmail.marcosav2010"
-version = "1.0.0"
+version = "1.1.0"
 
 val springBootVersion = "3.2.4"
 val springDocVersion = "2.3.0"
 val jacksonVersion = "2.17.0"
 val mapstructVersion = "1.5.5.Final"
 val kotlinVersion = "1.9.23"
-val myfitnesspalApiVersion = "0.5.4"
+val myfitnesspalApiVersion = "0.5.5"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_21

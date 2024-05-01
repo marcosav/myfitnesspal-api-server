@@ -1,9 +1,11 @@
 mfp:
-  python:
+  implementation: ${MFP_IMPLEMENTATION:library}
+  py-mfp:
     path: ${MFP_PYTHON_PATH}
-    binary: ${MFP_PYTHON:python3}
-    cookies-db-path: ${MFP_PYTHON_COOKIE_DB_PATH}
-  library:
-    username: ${MFP_USERNAME:}
-    password: ${MFP_PASSWORD:}
-    cache-lifespan: ${CACHE_LIFESPAN:7200}
+
+python:
+  binary: ${MFP_PYTHON:python3}
+
+browsercookies:
+  cookie-loader-path: ${MFP_PYTHON_COOKIE_LOADER_PATH:}
+  cookies-db-path: ${MFP_PYTHON_COOKIE_DB_PATH}

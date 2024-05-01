@@ -9,6 +9,6 @@ import org.springframework.stereotype.Component
 class GetMealsUseCaseImpl(private val settingsFetcher: SettingsFetcher) : GetMealsUseCase {
 
     override fun invoke(): List<Meal> {
-        return settingsFetcher.getMeals();
+        return settingsFetcher.getMeals()
     }
 }

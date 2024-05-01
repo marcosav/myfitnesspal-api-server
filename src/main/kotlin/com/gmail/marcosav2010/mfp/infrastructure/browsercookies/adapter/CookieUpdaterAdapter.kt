@@ -1,4 +1,4 @@
-package com.gmail.marcosav2010.mfp.infrastructure.mfp.python.adapter
+package com.gmail.marcosav2010.mfp.infrastructure.browsercookies.adapter
 
 import com.gmail.marcosav2010.mfp.application.ports.SessionUpdater
 import org.springframework.beans.factory.annotation.Value
@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component
 import java.io.File
 
 @Component
-class SessionFileAdapter : SessionUpdater {
+class CookieUpdaterAdapter : SessionUpdater {
 
-    @Value("\${mfp.python.cookies-db-path}")
+    @Value("\${browsercookies.cookies-db-path}")
     private lateinit var sessionCookiesPath: String
 
     override fun update(cookieFile: Resource?) {

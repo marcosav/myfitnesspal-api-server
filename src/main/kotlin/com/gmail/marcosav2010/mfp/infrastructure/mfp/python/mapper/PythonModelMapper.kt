@@ -7,7 +7,6 @@ import com.gmail.marcosav2010.mfp.infrastructure.mfp.python.model.PDay
 import com.gmail.marcosav2010.mfp.infrastructure.mfp.python.model.PMeal
 import org.mapstruct.Mapper
 import org.mapstruct.Mapping
-import java.util.*
 
 @Mapper(componentModel = "spring")
 interface PythonModelMapper {
