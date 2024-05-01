@@ -1,11 +1,11 @@
 mfp:
   implementation: ${MFP_IMPLEMENTATION:library}
   py-mfp:
-    path: ${MFP_PYTHON_PATH}
+    path: ${MFP_PYTHON_PATH:/home/appuser/mfp_bridge.py}
 
 python:
   binary: ${MFP_PYTHON:python3}
 
 browsercookies:
-  cookie-loader-path: ${MFP_PYTHON_COOKIE_LOADER_PATH:}
-  cookies-db-path: ${MFP_PYTHON_COOKIE_DB_PATH}
+  cookie-loader-path: ${MFP_PYTHON_COOKIE_LOADER_PATH:/home/appuser/cookie_bridge.py}
+  cookies-db-path: ${MFP_PYTHON_COOKIE_DB_PATH:cookies.sqlite}
